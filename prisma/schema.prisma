@@ -35,6 +35,7 @@ model Ticket {
   id                    String    @id @default(uuid())
   subject               String
   description           String    @db.Text
+  attachmentFilename    String?
   category              Category?
   priority              Priority?
   routing               Routing?
