@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.127.0",
     "@base-ui/react": "^1.8.0",
     "@clerk/nextjs": "^7.9.4",
     "@hookform/resolvers": "^5.9.1",
