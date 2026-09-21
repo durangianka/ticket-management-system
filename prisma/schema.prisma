@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  INCIDENT
+  BUG
+  FEATURE_REQUEST
+  ACCOUNT_BILLING
+  ACCESS
+  QUESTION
+}
+
+enum Priority {
+  P1
+  P2
+  P3
+  P4
+}
+
+enum Routing {
+  ANSWER_DIRECTLY
+  PLATFORM_ENGINEERING
+}
+
+model Ticket {
+  id                    String    @id @default(uuid())
+  subject               String
+  description           String    @db.Text
+  category              Category?
+  priority              Priority?
+  routing               Routing?
+  recommendedNextAction String?   @db.Text
+  classificationError   Boolean   @default(false)
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
